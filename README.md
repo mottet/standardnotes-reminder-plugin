@@ -13,15 +13,35 @@ A StandardNotes plugin that allows you to add reminders to your notes. Never for
 
 ## Installation
 
-### Option 1: Direct Installation
-1. Host the plugin files on a web server or use GitHub Pages
-2. In StandardNotes, go to Extensions
-3. Import the plugin using the URL to your hosted `index.html`
+### Install in StandardNotes (Recommended)
 
-### Option 2: Local Development
+1. Open StandardNotes and go to **Extensions** (or **Account** → **Extensions**)
+2. Scroll to **Import Extension**
+3. Paste this URL:
+   ```
+   https://mottet.github.io/standardnotes-reminder-plugin/plugin.json
+   ```
+4. Click **Install**
+5. The reminder plugin will now be available in your editor
+
+### Alternative: Direct URL Installation
+
+1. In StandardNotes, go to **Extensions**
+2. Click **Import Extension**
+3. Use this direct URL:
+   ```
+   https://mottet.github.io/standardnotes-reminder-plugin/index.html
+   ```
+
+### Local Development
+
 1. Clone this repository
+   ```bash
+   git clone https://github.com/mottet/standardnotes-reminder-plugin.git
+   cd standardnotes-reminder-plugin
+   ```
 2. Open `index.html` in a web browser to test locally
-3. For StandardNotes integration, you'll need to host the files
+3. For StandardNotes integration, you'll need to host the files or use the GitHub Pages deployment
 
 ## Usage
 
@@ -47,10 +67,15 @@ A StandardNotes plugin that allows you to add reminders to your notes. Never for
 
 ### Files Structure
 ```
+├── .github/
+│   └── workflows/
+│       └── deploy-pages.yml  # GitHub Pages deployment workflow
 ├── index.html      # Main plugin interface
 ├── main.js         # JavaScript functionality
 ├── styles.css      # Plugin styling
 ├── package.json    # Package metadata
+├── plugin.json     # StandardNotes plugin manifest
+├── icon.svg        # Plugin icon
 └── README.md       # Documentation
 ```
 
@@ -69,10 +94,26 @@ The plugin integrates with StandardNotes using the Component Manager API. It can
 
 ## Development
 
+### GitHub Pages Deployment
+
+This plugin is automatically deployed to GitHub Pages when changes are pushed to the `main` branch. The workflow:
+- Builds and deploys all files to GitHub Pages
+- Makes the plugin accessible at: `https://mottet.github.io/standardnotes-reminder-plugin/`
+- Updates the plugin manifest at: `https://mottet.github.io/standardnotes-reminder-plugin/plugin.json`
+
+To enable GitHub Pages for your fork:
+1. Go to repository **Settings** → **Pages**
+2. Under **Source**, select **GitHub Actions**
+3. Push to the `main` branch to trigger deployment
+
 ### Testing Locally
 ```bash
 # Simply open index.html in a browser
 open index.html
+
+# Or use a local server
+python3 -m http.server 8080
+# Then open http://localhost:8080
 ```
 
 ### No Build Required
