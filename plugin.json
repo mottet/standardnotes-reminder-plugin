@@ -1,0 +1,23 @@
+{
+  "identifier": "org.standardnotes.reminder-plugin",
+  "name": "Reminder Plugin",
+  "content_type": "SN|Component",
+  "area": "editor-stack",
+  "version": "1.0.0",
+  "description": "Add time-based reminders to your notes with visual indicators and browser notifications",
+  "url": "https://mottet.github.io/standardnotes-reminder-plugin/index.html",
+  "download_url": "https://github.com/mottet/standardnotes-reminder-plugin/archive/refs/heads/main.zip",
+  "latest_url": "https://mottet.github.io/standardnotes-reminder-plugin/plugin.json",
+  "marketing_url": "https://github.com/mottet/standardnotes-reminder-plugin",
+  "thumbnail_url": "https://mottet.github.io/standardnotes-reminder-plugin/icon.svg",
+  "supported_types": ["Note"],
+  "actions": [
+    {
+      "label": "Add Reminder",
+      "url": "https://mottet.github.io/standardnotes-reminder-plugin/index.html",
+      "verb": "show",
+      "context": "Note",
+      "content_types": ["Note"]
+    }
+  ]
+}

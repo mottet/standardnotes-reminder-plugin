@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StandardNotes Reminder Plugin</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Note Reminders</h1>
+        </header>
+        
+        <main>
+            <section class="add-reminder">
+                <h2>Add New Reminder</h2>
+                <form id="reminderForm">
+                    <div class="form-group">
+                        <label for="reminderDate">Date & Time:</label>
+                        <input type="datetime-local" id="reminderDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reminderNote">Note:</label>
+                        <textarea id="reminderNote" rows="3" placeholder="Add a note for this reminder..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Reminder</button>
+                </form>
+            </section>
+            
+            <section class="reminders-list">
+                <h2>Active Reminders</h2>
+                <div id="remindersList" class="reminders-container">
+                    <p class="empty-state">No reminders set. Add one above!</p>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <script src="main.js"></script>
+</body>
+</html>

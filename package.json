@@ -1,0 +1,25 @@
+{
+  "name": "standardnotes-reminder-plugin",
+  "version": "1.0.0",
+  "description": "StandardNotes plugin to add reminders on your notes",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mottet/standardnotes-reminder-plugin.git"
+  },
+  "keywords": [
+    "standardnotes",
+    "plugin",
+    "reminder",
+    "notes"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mottet/standardnotes-reminder-plugin/issues"
+  },
+  "homepage": "https://github.com/mottet/standardnotes-reminder-plugin#readme"
+}
