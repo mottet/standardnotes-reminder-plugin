@@ -1,7 +1,7 @@
 {
   "name": "standardnotes-reminder-plugin",
   "version": "1.0.0",
-  "description": "StandardNote plugin to add reminders on your notes",
+  "description": "StandardNotes plugin to add reminders on your notes",
   "main": "index.html",
   "scripts": {
     "test": "echo \"No tests specified\" && exit 0"

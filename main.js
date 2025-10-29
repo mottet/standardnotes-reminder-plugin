@@ -29,10 +29,10 @@ class StandardNotesPlugin {
         if (window.ComponentManager) {
             this.componentManager = new ComponentManager({
                 coalescedSaving: true,
-                coalescedSavingDelay: 400
-            }, (component) => {
-                // Component manager ready callback
-                this.onComponentManagerReady(component);
+                coalescedSavingDelay: 400,
+                onReady: (component) => {
+                    this.onComponentManagerReady(component);
+                }
             });
         }
     }
@@ -101,6 +101,20 @@ class StandardNotesPlugin {
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 this.addReminder();
+            });
+        }
+
+        // Event delegation for delete buttons
+        const remindersList = document.getElementById('remindersList');
+        if (remindersList) {
+            remindersList.addEventListener('click', (e) => {
+                if (e.target.classList.contains('delete-reminder')) {
+                    const reminderItem = e.target.closest('.reminder-item');
+                    if (reminderItem) {
+                        const reminderId = reminderItem.dataset.reminderId;
+                        this.deleteReminder(reminderId);
+                    }
+                }
             });
         }
     }
@@ -173,14 +187,14 @@ class StandardNotesPlugin {
             const formattedDate = this.formatDateTime(reminderDate);
 
             return `
-                <div class="reminder-item ${statusClass}">
+                <div class="reminder-item ${statusClass}" data-reminder-id="${reminder.id}">
                     <div class="reminder-content">
                         <div class="reminder-datetime">${formattedDate}</div>
                         ${reminder.note ? `<div class="reminder-note">${this.escapeHtml(reminder.note)}</div>` : ''}
                         ${statusText}
                     </div>
                     <div class="reminder-actions">
-                        <button class="btn btn-danger" onclick="plugin.deleteReminder('${reminder.id}')">Delete</button>
+                        <button class="btn btn-danger delete-reminder">Delete</button>
                     </div>
                 </div>
             `;
@@ -244,15 +258,13 @@ class StandardNotesPlugin {
         // Try to use browser notifications if available
         if ('Notification' in window && Notification.permission === 'granted') {
             new Notification('StandardNotes Reminder', {
-                body: message,
-                icon: '🔔'
+                body: message
             });
         } else if ('Notification' in window && Notification.permission !== 'denied') {
             Notification.requestPermission().then(permission => {
                 if (permission === 'granted') {
                     new Notification('StandardNotes Reminder', {
-                        body: message,
-                        icon: '🔔'
+                        body: message
                     });
                 }
             });
